@@ -14,6 +14,8 @@ const App = () => {
     { name: "Orange", price: 15 },
     { name: "Grapes", price: 25 },
     { name: "Pineapple", price: 30 },
+    { name: "Razor", price: 80 },
+    { name: "corflake", price: 90 },
     { name: "Mango", price: 40 },
   ];
 
@@ -25,7 +27,7 @@ const App = () => {
         value={budget}
         onChange={(e) => setBudget(e.target.value)}
       />
-      <ul>
+      {/* <ul>
         {fruits.map((item) => (
           <li key={item.name}>
             {item.name}
@@ -45,7 +47,35 @@ const App = () => {
             </span>
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <table>
+        <thead>
+          <tr key="head">
+            <th>Items you can buy are in Green color</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fruits.map((item) => (
+            <tr key={item.name}>
+              <td>{item.name}</td>
+              <td
+                style={{
+                  // budget > item.price ? color: "red" :  color: "red",
+                  color:
+                    budget >= item.price
+                      ? "green"
+                      : budget == ""
+                      ? "black"
+                      : "red",
+                  // color: (budget == "") & "black",
+                }}
+              >
+                {item.price}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
